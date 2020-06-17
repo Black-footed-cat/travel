@@ -1,12 +1,18 @@
 package com.example.mainactivity;
-
-import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+
 import android.util.Log;
+import android.view.View;
+
+import android.widget.Button;
 import android.widget.EditText;
+
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,75 +24,105 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-
-public class Favorite extends AppCompatActivity {
+public class ShowContext extends AppCompatActivity {
     private static String TAG = "phptest";
-    private  String favorites;
+private  String row_num;
     private EditText mEditTexttitle;
     private EditText mEditTextDate;
     private EditText mEditTextSearchKeyword;
     private String mTextViewResult;
-    private ArrayList<FavoriteData> mArrayList;
-    private FavoriteAdapter mAdapter;
+    private ArrayList<ContextData> mArrayList;
+    private ShowContextadapter mAdapter;
     private RecyclerView mRecyclerView;
     private String mJsonString;
-    private String ran1;
-
+    public String picture;
+    private Button btn_delete;
     SharedPreferences sharedPreferences;
-
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.favorite);
-
-
-        sharedPreferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE); // onCreate
-        final String id=sharedPreferences.getString(getResources().getString(R.string.IdState), "");
-
+        setContentView(R.layout.activity_showcontext);
+        sharedPreferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
         mRecyclerView = (RecyclerView) findViewById(R.id.listView_main_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         NetworkUtil.setNetworkPolicy();
+        Intent intent = getIntent();
+        final String row_num =intent.getStringExtra("a");
 
         mArrayList = new ArrayList<>();
 
-        mAdapter = new FavoriteAdapter(this, mArrayList);
+        mAdapter = new ShowContextadapter(this, mArrayList);
 
         mRecyclerView.setAdapter(mAdapter);
 
         mArrayList.clear();
         mAdapter.notifyDataSetChanged();
 
-        Favorite.GetData task = new Favorite.GetData();
-        task.execute( "http://ahtj1234.dothome.co.kr/favorites.php",id);
+        ShowContext.GetData task = new ShowContext.GetData();
+        task.execute( "http://ahtj1234.dothome.co.kr/Context.php",row_num);
         String loginStatus = sharedPreferences.getString(getResources().getString(R.string.prefLoginState), "");
         final String Idstate=sharedPreferences.getString(getResources().getString(R.string.IdState), "");
 
         if (loginStatus.equals("loggedout")) {
-            ran1 = getString(R.string.login_check);
-            Toast.makeText(getApplication(), ran1 ,Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplication(),"로그인이 필요합니다.",Toast.LENGTH_SHORT).show();
+            Intent intent2 = new Intent(getApplication(), Login.class);
+            startActivity(intent2);
             finish();
-
         }
+
+        //post>>delete.php검사>>삭제
+        //db ID값추가 글작성할때 자동으로 ID값 전송
+        btn_delete = (Button)findViewById(R.id.btn_delete);
+        btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                try {
+                    PHPDelete request = new PHPDelete("http://ahtj1234.dothome.co.kr/delete.php");
+                    String result = request.PhPDel(row_num,Idstate);
+                    if(result.equals("1")){
+                        Toast.makeText(getApplication(),"완료되었습니다",Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Toast.makeText(getApplication(),"글 작성자가 아닙니다.",Toast.LENGTH_SHORT).show();
+                    }
+                }catch (MalformedURLException e){
+                    e.printStackTrace();
+                }
+            }
+        });
+
+
+
+
+
     }
-    private class GetData extends AsyncTask<String, Void, String> {
 
-        ProgressDialog progressDialog;
-        String errorString = "잘못됨";
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
 
-            progressDialog = ProgressDialog.show(Favorite.this,
-                    "Please Wait", null, true, true);
-        }
 
+        private class GetData extends AsyncTask<String, Void, String> {
+
+            ProgressDialog progressDialog;
+            String errorString = null;
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+
+                progressDialog = ProgressDialog.show(ShowContext.this,
+                        "Please Wait", null, true, true);
+            }
 
         @Override
         protected void onPostExecute(String result) {
@@ -98,7 +134,7 @@ public class Favorite extends AppCompatActivity {
 
             if (result == null){
 
-                Toast.makeText(Favorite.this, errorString, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ShowContext.this, errorString, Toast.LENGTH_SHORT).show();
             }
             else {
 
@@ -112,8 +148,8 @@ public class Favorite extends AppCompatActivity {
         protected String doInBackground(String... params) {
 
             String serverURL = params[0];
-            String id=(String)params[1];
-            String postParameters = "id="+id;
+            String nu=(String)params[1];
+            String postParameters = "num="+nu;
 
 
             try {
@@ -173,15 +209,14 @@ public class Favorite extends AppCompatActivity {
             }
 
         }
-    }
-
+                }
+    public String publicMethod() { return picture; }
 
     private void showResult(){
 
         String TAG_JSON="webnautes";
-
-        String TAG_favorite = "favorites";
-
+        String TAG_context = "context";
+        String TAG_picture = "picture";
 
 
         try {
@@ -193,14 +228,14 @@ public class Favorite extends AppCompatActivity {
                 JSONObject item = jsonArray.getJSONObject(i);
 
 
-                String context = item.getString(TAG_favorite);
+                String context = item.getString(TAG_context);
+                picture = item.getString(TAG_picture);
+
+                ContextData personalData = new ContextData();
 
 
-                //Toast.makeText(ShowContext.this, , Toast.LENGTH_SHORT).show();
-                FavoriteData personalData = new FavoriteData();
+                personalData.setMember_context(context);
 
-
-                personalData.setFavor_id(context);
 
 
 

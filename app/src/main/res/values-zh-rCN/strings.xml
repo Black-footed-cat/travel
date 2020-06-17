@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">旅行信息共享软件</string>
+    <string name="prefLoginState" >loginstate</string>
+    <string name="IdState">idstate</string>
+    <!-- Ted Permission -->
+    <string name="permission_1">[设定] > [权限] 上可以允许.</string>
+    <string name="permission_2">为保存照片和文件,需要接近权限.</string>
+    <string name="검색" >搜索 : </string>
+    <string name="제목" >题目: </string>
+    <string name="회원가입">注册会员</string>
+    <string name="로그인">登录</string>
+    <string name="로그아웃">登出</string>
+    <string name="닉네임">绰号</string>
+    <string name="이메일주소">电邮地址</string>
+    <string name="비밀번호">密码</string>
+    <string name="회원가입완료">会员注册费</string>
+    <string name="글삭제하기">删除文章</string>
+    <string name="내용">内容 : </string>
+    <string name="사진">照片 : </string>
+    <string name="작성완료">制作完毕</string>
+    <string name="글작성하기">写作</string>
+    <string name="service">ChsService</string>
+    <string name="m_contypeid">82</string>
+    <string name="hotel_contypeid">80</string>
+    <string name="event_contypeid">85</string>
+    <string name="st_info">旅游信息</string>
+    <string name="st_location">旅行者位置</string>
+    <string name="st_review">后期</string>
+    <string name="travel_info">旅游信息</string>
+    <string name="hotel_info">住宿信息</string>
+    <string name="event_info">活动信息</string>
+    <string name="즐겨찾기">收藏</string>
+    <string-array name="sort">
+        <item>题目顺序</item>
+        <item>题目顺序</item>
+        <item>最新</item>
+
+    </string-array>
+    <string name="여행">是分享旅游地信息的空间. </string>
+    <string name="text1">에 작성을 완료했습니다.</string>
+    <string name="login_check">로그인이 필요합니다</string>
+</resources>

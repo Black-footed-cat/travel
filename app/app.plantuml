@@ -1,0 +1,229 @@
+@startuml
+
+title __APP's Class Diagram__\n
+
+
+  
+
+  namespace model {
+    class com.example.mainactivity.ContextData {
+    }
+  }
+  
+
+  namespace view {
+    class com.example.mainactivity.Favorite {
+    }
+  }
+  
+
+  namespace control {
+    class com.example.mainactivity.FavoriteAdapter {
+    }
+  }
+  
+
+  namespace model {
+    class com.example.mainactivity.FavoriteData {
+    }
+  }
+  
+
+  namespace view {
+    class com.example.mainactivity.Fragment_event_info {
+    }
+  }
+  
+
+  namespace view {
+    class com.example.mainactivity.Fragment_hotel_info {
+    }
+  }
+  
+
+  namespace view {
+    class com.example.mainactivity.Fragment_info {
+    }
+  }
+  
+
+  namespace view {
+    class com.example.mainactivity.Fragment_map {
+    }
+  }
+  
+
+  namespace view {
+    class com.example.mainactivity.Fragment_review {
+    }
+  }
+  
+
+  namespace view {
+    class com.example.mainactivity.Fragment_travel_main {
+    }
+  }
+  
+
+  namespace view {
+    class com.example.mainactivity.Login {
+    }
+  }
+  
+
+  namespace view {
+    class com.example.mainactivity.MainActivity {
+    }
+  }
+  
+
+  namespace model {
+    class com.example.mainactivity.Main_Tab_adapter {
+    }
+  }
+  
+
+  namespace  {
+    class com.example.mainactivity.MySingleton {
+    }
+  }
+  
+
+  namespace com.example.mainactivity {
+    class com.example.mainactivity.NetworkUtil {
+    }
+  }
+  
+
+  namespace com.example.mainactivity {
+    class com.example.mainactivity.PHPDelete {
+    }
+  }
+  
+
+  namespace com.example.mainactivity {
+    class com.example.mainactivity.PHPFavorite {
+    }
+  }
+  
+
+  namespace com.example.mainactivity {
+    class com.example.mainactivity.PHPRequest {
+    }
+  }
+  
+
+  namespace com.example.mainactivity {
+    class com.example.mainactivity.RegisterActivity {
+    }
+  }
+  
+
+  namespace com.example.mainactivity {
+    class com.example.mainactivity.ShowContext {
+    }
+  }
+  
+
+  namespace com.example.mainactivity {
+    class com.example.mainactivity.ShowContextadapter {
+    }
+  }
+  
+
+  namespace com.example.mainactivity {
+    class com.example.mainactivity.Tab_adapter {
+    }
+  }
+  
+
+
+  
+
+  namespace com.example.mainactivity {
+    class com.example.mainactivity.Travel_adapter {
+    }
+  }
+  
+
+  namespace com.example.mainactivity {
+    class com.example.mainactivity.Travel_info {
+    }
+  }
+  
+
+  namespace com.example.mainactivity {
+    class com.example.mainactivity.Travel_info_adapter {
+    }
+  }
+  
+
+  namespace com.example.mainactivity {
+    class com.example.mainactivity.Travel_info_item {
+    }
+  }
+  
+
+  namespace com.example.mainactivity {
+    class com.example.mainactivity.Travel_item {
+    }
+  }
+  
+
+  namespace com.example.mainactivity {
+    class com.example.mainactivity.Write {
+    }
+  }
+  
+
+  namespace com.example.mainactivity {
+    class com.example.mainactivity.communityData {
+    }
+  }
+  
+
+  namespace com.example.mainactivity {
+    class com.example.mainactivity.communityadapter {
+    }
+  }
+  
+
+  com.example.mainactivity.Favorite -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.mainactivity.Favorite o-- com.example.mainactivity.FavoriteAdapter : mAdapter
+  com.example.mainactivity.FavoriteAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.mainactivity.Fragment_event_info -up-|> androidx.fragment.app.Fragment
+  com.example.mainactivity.Fragment_event_info o-- com.example.mainactivity.Travel_item : bus
+  com.example.mainactivity.Fragment_hotel_info -up-|> androidx.fragment.app.Fragment
+  com.example.mainactivity.Fragment_hotel_info o-- com.example.mainactivity.Travel_item : bus
+  com.example.mainactivity.Fragment_info -up-|> androidx.fragment.app.Fragment
+  com.example.mainactivity.Fragment_info o-- com.example.mainactivity.Travel_info_item : bus
+  com.example.mainactivity.Fragment_map -up-|> androidx.fragment.app.Fragment
+  com.example.mainactivity.Fragment_review -up-|> androidx.fragment.app.Fragment
+  com.example.mainactivity.Fragment_review o-- com.example.mainactivity.communityadapter : mAdapter
+  com.example.mainactivity.Fragment_travel_main -up-|> androidx.fragment.app.Fragment
+  com.example.mainactivity.Fragment_travel_main o-- com.example.mainactivity.Travel_item : bus
+  com.example.mainactivity.Login -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.mainactivity.MainActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.mainactivity.Main_Tab_adapter -up-|> androidx.fragment.app.FragmentPagerAdapter
+  com.example.mainactivity.RegisterActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.mainactivity.ShowContext -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.mainactivity.ShowContext o-- com.example.mainactivity.ShowContextadapter : mAdapter
+  com.example.mainactivity.ShowContextadapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.mainactivity.Tab_adapter -up-|> androidx.fragment.app.FragmentPagerAdapter
+
+
+  com.example.mainactivity.Travel_adapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.mainactivity.Travel_info -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.mainactivity.Travel_info_adapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.mainactivity.Write -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.mainactivity.communityadapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

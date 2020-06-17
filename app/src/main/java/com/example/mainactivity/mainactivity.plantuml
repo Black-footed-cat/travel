@@ -1,0 +1,703 @@
+@startuml
+
+title 클래스다이어그램
+
+  namespace model {
+    class model.ContextData {
+        - member_context : String
+        + getMember_context()
+        + setMember_context()
+    }
+  }
+  
+
+  namespace view {
+    class view.Favorite {
+        ~ sharedPreferences : SharedPreferences
+        {static} - TAG : String
+        - favorites : String
+        - mArrayList : ArrayList<FavoriteData>
+        - mEditTextDate : EditText
+        - mEditTextSearchKeyword : EditText
+        - mEditTexttitle : EditText
+        - mJsonString : String
+        - mRecyclerView : RecyclerView
+        - mTextViewResult : String
+        - ran1 : String
+        # onCreate()
+        - showResult()
+    }
+  }
+  
+
+  namespace control {
+    class control.Favorite.GetData {
+        ~ errorString : String
+        ~ progressDialog : ProgressDialog
+        # doInBackground()
+        # onPostExecute()
+        # onPreExecute()
+    }
+  }
+  
+
+  namespace control {
+    class control.FavoriteAdapter {
+        ~ text : String
+        - context : Activity
+        - mContext : Context
+        - mList : ArrayList<FavoriteData>
+        + FavoriteAdapter()
+        + getItemCount()
+        + onBindViewHolder()
+        + onCreateViewHolder()
+    }
+  }
+  
+
+  namespace control {
+    class control.FavoriteAdapter.CustomViewHolder {
+        # favor : TextView
+        + CustomViewHolder()
+    }
+  }
+  
+
+  namespace model {
+    class model.FavoriteData {
+        - favor_id : String
+        + getFavor_id()
+        + setFavor_id()
+    }
+  }
+  
+
+  namespace view {
+    class view.Fragment_event_info {
+        + arrage : String
+        + key : String
+        + visible : boolean
+        ~ list : ArrayList<Travel_item>
+        ~ recyclerView : RecyclerView
+        - contypeid : String
+        {static} - instance : Fragment_event_info
+        - lan : String
+        - searchString : String
+        {static} + getInstance()
+        + onCreateView()
+        + search()
+    }
+  }
+  
+
+  namespace control {
+    class control.Fragment_event_info.MyAsyncTask {
+        # doInBackground()
+        # onPostExecute()
+    }
+  }
+  
+
+  namespace view {
+    class view.Fragment_hotel_info {
+        + arrage : String
+        + key : String
+        + visible : boolean
+        ~ list : ArrayList<Travel_item>
+        ~ recyclerView : RecyclerView
+        - contypeid : String
+        {static} - instance : Fragment_hotel_info
+        - lan : String
+        - searchString : String
+        {static} + getInstance()
+        + onCreateView()
+        + search()
+    }
+  }
+  
+
+  namespace control {
+    class control.Fragment_hotel_info.MyAsyncTask {
+        # doInBackground()
+        # onPostExecute()
+    }
+  }
+  
+
+  namespace view {
+    class view.Fragment_info {
+        + Service_Country : String
+        {static} + adapter : Travel_info_adapter
+        + contentid : String
+        {static} + items : ArrayList<Travel_info_item>
+        + key : String
+        + title : String
+        ~ list : ArrayList<Travel_info_item>
+        ~ recyclerView : RecyclerView
+        ~ sharedPreferences : SharedPreferences
+        - fan1 : String
+        - favoritebtn : Button
+        + Fragment_info()
+        + onCreateView()
+    }
+  }
+  
+
+  namespace control {
+    class control.Fragment_info.MyAsyncTask {
+        # doInBackground()
+        # onPostExecute()
+    }
+  }
+  
+
+  namespace view {
+    class view.Fragment_map {
+        + mapx : String
+        + mapx2 : double
+        + mapy : String
+        + mapy2 : double
+        - context : Context
+        + onCreateView()
+        - initDataset()
+    }
+  }
+  
+
+  namespace view {
+    class view.Fragment_review {
+        + contentid : String
+        + rew1 : String
+        ~ mSwipeRefreshLayout : SwipeRefreshLayout
+        ~ sharedPreferences : SharedPreferences
+        {static} - TAG : String
+        - mArrayList : ArrayList<communityData>
+        - mEditTextDate : EditText
+        - mEditTextSearchKeyword : EditText
+        - mEditTexttitle : EditText
+        - mJsonString : String
+        - mRecyclerView : RecyclerView
+        - mTextViewResult : String
+        + Fragment_review()
+        + onCreateView()
+        - showResult()
+    }
+  }
+  
+
+  namespace control {
+    class control.Fragment_review.GetData {
+        ~ errorString : String
+        ~ progressDialog : ProgressDialog
+        # doInBackground()
+        # onPostExecute()
+        # onPreExecute()
+    }
+  }
+  
+
+  namespace view {
+    class view.Fragment_travel_main {
+        + arrage : String
+        + key : String
+        ~ list : ArrayList<Travel_item>
+        ~ recyclerView : RecyclerView
+        {static} - REQUEST_CODE_LOCATION : int
+        - contypeid : String
+        - distance : String
+        {static} - instance : Fragment_travel_main
+        - lan : String
+        - locationManager : LocationManager
+        - mapx : String
+        - mapx2 : double
+        - mapy : String
+        - mapy2 : double
+        - mymapx : double
+        - mymapy : double
+        - searchString : String
+        {static} + getInstance()
+        + get_mymapx()
+        + get_mymapy()
+        + onCreateView()
+        + search()
+        - getMyLocation()
+    }
+  }
+  
+
+  namespace control {
+    class control.Fragment_travel_main.MyAsyncTask {
+        # doInBackground()
+        # onPostExecute()
+    }
+  }
+  
+
+  namespace view {
+    class view.Login {
+        ~ email : MaterialEditText
+        ~ login : Button
+        ~ password : MaterialEditText
+        ~ register : Button
+        ~ sharedPreferences : SharedPreferences
+        # onCreate()
+        - login()
+    }
+  }
+  
+
+  namespace view {
+    class view.MainActivity {
+        + arrange : String
+        + frag_status : String
+        {static} + mContext : Context
+        ~ sharedPreferences : SharedPreferences
+        ~ spinner : Spinner
+        - editText : EditText
+        - onSearchListener : OnEditorActionListener
+        - searchStr_event : String
+        - searchStr_hotel : String
+        - searchStr_travel : String
+        + get_arrange()
+        + get_search_event()
+        + get_search_hotel()
+        + get_search_travel()
+        + onCreateOptionsMenu()
+        + onOptionsItemSelected()
+        + onPrepareOptionsMenu()
+        # onCreate()
+        - search()
+        - sort()
+    }
+  }
+  
+
+
+  
+
+  namespace model {
+    class model.MySingleton {
+        - mCtx : Context
+        {static} - mInstance : MySingleton
+        - mRequestQueue : RequestQueue
+        + MySingleton()
+        + addToRequestQueue()
+        {static} + getmInstance()
+        + getmRequestQueue()
+    }
+  }
+  
+
+  namespace control {
+    class control.NetworkUtil {
+        {static} + setNetworkPolicy()
+    }
+  }
+  
+
+  namespace control {
+    class control.PHPDelete {
+        - url : URL
+        + PHPDelete()
+        + PhPDel()
+        - readStream()
+    }
+  }
+  
+
+  namespace control {
+    class control.PHPFavorite {
+        - url : URL
+        + PHPFavorite()
+        + PhPtest()
+        - readStream()
+    }
+  }
+  
+
+  namespace control {
+    class control.PHPRequest {
+        - url : URL
+        + PHPRequest()
+        + PhPtest()
+        - readStream()
+    }
+  }
+  
+
+  namespace view {
+    class view.RegisterActivity {
+        ~ email : MaterialEditText
+        ~ password : MaterialEditText
+        ~ register : Button
+        ~ userName : MaterialEditText
+        # onCreate()
+        - registerNewAccount()
+    }
+  }
+  
+
+  namespace view {
+    class view.ShowContext {
+        + picture : String
+        ~ sharedPreferences : SharedPreferences
+        {static} - TAG : String
+        - btn_delete : Button
+        - mArrayList : ArrayList<ContextData>
+        - mEditTextDate : EditText
+        - mEditTextSearchKeyword : EditText
+        - mEditTexttitle : EditText
+        - mJsonString : String
+        - mRecyclerView : RecyclerView
+        - mTextViewResult : String
+        - row_num : String
+        + publicMethod()
+        # onCreate()
+        - showResult()
+    }
+  }
+  
+
+  namespace control {
+    class control.ShowContext.GetData {
+        ~ errorString : String
+        ~ progressDialog : ProgressDialog
+        # doInBackground()
+        # onPostExecute()
+        # onPreExecute()
+    }
+  }
+  
+  namespace control {
+    class control.Main_Tab_adapter {
+        ~ currentPage : int
+        ~ mNumOfTabs : int
+        + Main_Tab_adapter()
+        + getCount()
+        + getItem()
+    }
+  }
+  namespace control {
+    class control.ShowContextadapter {
+        - context : Activity
+        - mContext : Context
+        - mList : ArrayList<ContextData>
+        + ShowContextadapter()
+        + getItemCount()
+        + onBindViewHolder()
+        + onCreateViewHolder()
+    }
+  }
+  
+
+  namespace control {
+    class control.ShowContextadapter.CustomViewHolder {
+        # context1 : TextView
+        # ivimage : ImageView
+        + CustomViewHolder()
+    }
+  }
+  
+
+  namespace control {
+    class control.Tab_adapter {
+        ~ mNumOfTabs : int
+        + Tab_adapter()
+        + getCount()
+        + getItem()
+    }
+  }
+  
+
+
+
+
+  
+  namespace control {
+    class control.Travel_adapter.MyViewHolder {
+        + locationNo1 : TextView
+        + plateNo1 : TextView
+        ~ ivImage : ImageView
+        + MyViewHolder()
+    }
+  }
+
+  namespace control {
+    class control.Travel_adapter {
+        ~ contentid : String
+        ~ contentid2 : String
+        ~ distance : String
+        ~ mapx : String
+        ~ mapx2 : Double
+        ~ mapy : String
+        ~ mapy2 : Double
+        ~ mymapx : Double
+        ~ mymapy : Double
+        - mContext : Context
+        - mInflate : LayoutInflater
+        - mList : ArrayList<Travel_item>
+        + Travel_adapter()
+        {static} + getDistance()
+        + getItemCount()
+        + onBindViewHolder()
+        + onCreateViewHolder()
+        + result_location()
+    }
+  }
+  
+
+
+
+  namespace view {
+    class view.Travel_info {
+        {static} + mContext : Context
+        + mapx2 : double
+        + mapy2 : double
+        ~ contentid : String
+        ~ mapx : String
+        ~ mapy : String
+        - st_info : String
+        - st_location : String
+        - st_review : String
+        + publicMethod()
+        + publicMethod2()
+        + publicMethod3()
+        + publicMethod4()
+        + publicMethod5()
+        + publicMethod6()
+        # onCreate()
+    }
+  }
+  
+
+  namespace control {
+    class control.Travel_info_adapter {
+        ~ contentid : String
+        - mContext : Context
+        - mInflate : LayoutInflater
+        - mList : ArrayList<Travel_info_item>
+        + Travel_info_adapter()
+        + getItemCount()
+        + onBindViewHolder()
+        + onCreateViewHolder()
+    }
+  }
+  
+
+  namespace control {
+    class control.Travel_info_adapter.MyViewHolder {
+        + locationNo1 : TextView
+        + plateNo1 : TextView
+        + routeId : TextView
+        + stationId : TextView
+        + MyViewHolder()
+    }
+  }
+  
+
+  namespace model {
+    class model.Travel_info_item {
+        ~ locationNo1 : String
+        ~ locationNo2 : String
+        ~ plateNo1 : String
+        ~ predictTime1 : String
+        ~ predictTime2 : String
+        ~ routeId : String
+        ~ staOrder : String
+        ~ stationId : String
+        + getLocationNo1()
+        + getLocationNo2()
+        + getPlateNo1()
+        + getPredictTime1()
+        + getPredictTime2()
+        + getRouteId()
+        + getStaOrder()
+        + getStationId()
+        + setLocationNo1()
+        + setLocationNo2()
+        + setPlateNo1()
+        + setPredictTime1()
+        + setPredictTime2()
+        + setRouteId()
+        + setStaOrder()
+        + setStationId()
+    }
+  }
+  
+
+  namespace model {
+    class model.Travel_item {
+        ~ firstimage : String
+        ~ locationNo1 : String
+        ~ locationNo2 : String
+        ~ mapx : String
+        ~ mapy : String
+        ~ plateNo1 : String
+        ~ predictTime1 : String
+        ~ predictTime2 : String
+        ~ routeId : String
+        ~ staOrder : String
+        + getFirstimage()
+        + getLocationNo1()
+        + getLocationNo2()
+        + getMapx()
+        + getMapy()
+        + getPlateNo1()
+        + getPredictTime1()
+        + getPredictTime2()
+        + getRouteId()
+        + getStaOrder()
+        + setFirstimage()
+        + setLocationNo1()
+        + setLocationNo2()
+        + setMapx()
+        + setMapy()
+        + setPlateNo1()
+        + setPredictTime1()
+        + setPredictTime2()
+        + setRouteId()
+        + setStaOrder()
+    }
+  }
+  
+
+  namespace view {
+    class view.Write {
+        ~ sharedPreferences : SharedPreferences
+        {static} - PICK_FROM_ALBUM : int
+        - btn_send : Button
+        - btn_upload : Button
+        - content_id : String
+        - context : EditText
+        - image_path : String
+        - image_status : boolean
+        - imgName : String
+        - picture : EditText
+        - tempFile : File
+        - title : EditText
+        + checkSelfPermission()
+        + onRequestPermissionsResult()
+        # onActivityResult()
+        # onCreate()
+        - doFileUpload()
+        - getRealPathFromURI()
+        - goToAlbum()
+        - setImage()
+        - tedPermission()
+    }
+  }
+  
+
+  namespace model {
+    class model.communityData {
+        + member_address : String
+        - member_Date : String
+        - member_context : String
+        - member_id : String
+        - member_row_number : String
+        - member_title : String
+        + getMember_Date()
+        + getMember_context()
+        + getMember_id()
+        + getMember_row_number()
+        + getMember_title()
+        + setMember_Date()
+        + setMember_context()
+        + setMember_id()
+        + setMember_row_number()
+        + setMember_title()
+    }
+  }
+  
+
+  namespace control {
+    class control.communityadapter {
+        ~ text : String
+        - context : Activity
+        - mContext : Context
+        - mList : ArrayList<communityData>
+        + communityadapter()
+        + getItemCount()
+        + onBindViewHolder()
+        + onCreateViewHolder()
+    }
+  }
+  
+
+  namespace control {
+    class control.communityadapter.CustomViewHolder {
+        # Date : TextView
+        # context : TextView
+        # id : TextView
+        # ivimage : ImageView
+        # title : TextView
+        + CustomViewHolder()
+    }
+  }
+  
+
+  view.Favorite -up-|> androidx.appcompat.app.AppCompatActivity
+  view.Favorite o-- control.FavoriteAdapter : mAdapter
+  view.Favorite +-down- control.Favorite.GetData
+  control.Favorite.GetData -up-|> android.os.AsyncTask
+  control.FavoriteAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  control.FavoriteAdapter +-down- control.FavoriteAdapter.CustomViewHolder
+  control.FavoriteAdapter.CustomViewHolder -up-|> androidx.recyclerview.widget.RecyclerView.ViewHolder
+  view.Fragment_event_info -up-|> androidx.fragment.app.Fragment
+  view.Fragment_event_info o-- model.Travel_item : bus
+  view.Fragment_event_info +-down- control.Fragment_event_info.MyAsyncTask
+  control.Fragment_event_info.MyAsyncTask -up-|> android.os.AsyncTask
+  view.Fragment_hotel_info -up-|> androidx.fragment.app.Fragment
+  view.Fragment_hotel_info o-- model.Travel_item : bus
+  view.Fragment_hotel_info +-down- control.Fragment_hotel_info.MyAsyncTask
+  control.Fragment_hotel_info.MyAsyncTask -up-|> android.os.AsyncTask
+  view.Fragment_info -up-|> androidx.fragment.app.Fragment
+  view.Fragment_info o-- model.Travel_info_item : bus
+  view.Fragment_info +-down- control.Fragment_info.MyAsyncTask
+  control.Fragment_info.MyAsyncTask -up-|> android.os.AsyncTask
+  view.Fragment_map -up-|> androidx.fragment.app.Fragment
+  view.Fragment_review -up-|> androidx.fragment.app.Fragment
+  view.Fragment_review o-- control.communityadapter : mAdapter
+  view.Fragment_review +-down- control.Fragment_review.GetData
+  control.Fragment_review.GetData -up-|> android.os.AsyncTask
+  view.Fragment_travel_main -up-|> androidx.fragment.app.Fragment
+  view.Fragment_travel_main o-- model.Travel_item : bus
+  view.Fragment_travel_main +-down- control.Fragment_travel_main.MyAsyncTask
+  control.Fragment_travel_main.MyAsyncTask -up-|> android.os.AsyncTask
+  view.Login -up-|> androidx.appcompat.app.AppCompatActivity
+  view.MainActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  control.Main_Tab_adapter -up-|> androidx.fragment.app.FragmentPagerAdapter
+  view.RegisterActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  view.ShowContext -up-|> androidx.appcompat.app.AppCompatActivity
+  view.ShowContext o-- control.ShowContextadapter : mAdapter
+  view.ShowContext +-down- control.ShowContext.GetData
+  control.ShowContext.GetData -up-|> android.os.AsyncTask
+  control.ShowContextadapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  control.ShowContextadapter +-down- control.ShowContextadapter.CustomViewHolder
+  control.ShowContextadapter.CustomViewHolder -up-|> androidx.recyclerview.widget.RecyclerView.ViewHolder
+  control.Tab_adapter -up-|> androidx.fragment.app.FragmentPagerAdapter
+
+
+
+
+  control.Travel_adapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  control.Travel_adapter +-down- control.Travel_adapter.MyViewHolder
+  control.Travel_adapter.MyViewHolder -up-|> androidx.recyclerview.widget.RecyclerView.ViewHolder
+  view.Travel_info -up-|> androidx.appcompat.app.AppCompatActivity
+  control.Travel_info_adapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  control.Travel_info_adapter +-down- control.Travel_info_adapter.MyViewHolder
+  control.Travel_info_adapter.MyViewHolder -up-|> androidx.recyclerview.widget.RecyclerView.ViewHolder
+  view.Write -up-|> androidx.appcompat.app.AppCompatActivity
+  control.communityadapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+ control.communityadapter +-down- control.communityadapter.CustomViewHolder
+  control.communityadapter.CustomViewHolder -up-|> androidx.recyclerview.widget.RecyclerView.ViewHolder
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

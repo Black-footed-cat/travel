@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Travel Information Sharing Application</string>
+    <string name="prefLoginState" >loginstate</string>
+    <string name="IdState">idstate</string>
+    <!-- Ted Permission -->
+    <string name="permission_1">[setting] > [right] can allow permissions.</string>
+    <string name="permission_2">Access is required to save photos and files.</string>
+    <string name="검색" >Search : </string>
+    <string name="제목" >Title: </string>
+    <string name="회원가입">Sign up for membership</string>
+    <string name="로그인">Login</string>
+    <string name="로그아웃">Log out</string>
+    <string name="닉네임">Nickname</string>
+    <string name="이메일주소">Email address</string>
+    <string name="비밀번호">Password</string>
+    <string name="회원가입완료">Membership registration completed</string>
+    <string name="글삭제하기">Delete writing</string>
+    <string name="내용">content : </string>
+    <string name="사진">Photograph : </string>
+    <string name="작성완료">Completed completion</string>
+    <string name="글작성하기">Writing</string>
+    <string name="service">EngService</string>
+    <string name="m_contypeid">76</string>
+    <string name="hotel_contypeid">80</string>
+    <string name="event_contypeid">85</string>
+    <string name="st_info">Travel Information</string>
+    <string name="st_location">Traveler\'s Location</string>
+    <string name="st_review">review</string>
+    <string name="travel_info">Travel information</string>
+    <string name="hotel_info">Hotel information</string>
+    <string name="event_info">Event information</string>
+    <string name="즐겨찾기">Favorites</string>
+    <string-array name="sort">
+        <item>order of title</item>
+        <item>order of inquiry</item>
+        <item>order of latest</item>
+
+    </string-array>
+    <string name="여행">This is a space for sharing information about travel destinations.</string>
+    <string name="text1">was written.</string>
+    <string name="login_check">Login is required</string>
+</resources>
